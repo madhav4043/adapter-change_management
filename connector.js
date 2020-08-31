@@ -148,9 +148,9 @@ class ServiceNowConnector {
     // Initialize return arguments for callback
     let uriVal;
     if (callOptions.query)
-        uriVal = constructUri(callOptions.serviceNowTable, callOptions.query);
+        uriVal = this.constructUri(callOptions.serviceNowTable, callOptions.query);
     else
-        uriVal = constructUri(callOptions.serviceNowTable);
+        uriVal = this.constructUri(callOptions.serviceNowTable);
     
     const requestOptions = {
         method: callOptions.method,
@@ -179,7 +179,7 @@ class ServiceNowConnector {
     *   Will be HTML text if hibernating instance.
     * @param {error} callback.error - The error property of callback.
     */
-    function post(callOptions, callback) {
+    post(callback) {
     let postCallOptions = { ...this.options };
     postCallOptions.method = 'POST';
     this.sendRequest(postCallOptions, (results, error) => callback(results, error));
